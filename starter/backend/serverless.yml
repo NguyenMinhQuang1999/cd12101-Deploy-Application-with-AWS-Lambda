@@ -49,12 +49,9 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:Query
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}
-      - Effect: Allow
-        Action:
           - xray:PutTelemetryRecords
           - xray:PutTraceSegments
-        Resource: "*"      
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}  
 
   # TODO: Configure this function
   CreateTodo:
@@ -73,12 +70,9 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:PutItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}
-      - Effect: Allow
-        Action:
           - xray:PutTelemetryRecords
           - xray:PutTraceSegments
-        Resource: "*"   
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE} 
 
   # TODO: Configure this function
   UpdateTodo:
@@ -101,12 +95,9 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:UpdateItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}
-      - Effect: Allow
-        Action:
           - xray:PutTelemetryRecords
           - xray:PutTraceSegments
-        Resource: "*"   
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}
 
   # TODO: Configure this function
   DeleteTodo:
@@ -126,12 +117,9 @@ functions:
       - Effect: Allow
         Action:
           - dynamodb:DeleteItem
-        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}
-      - Effect: Allow
-        Action:
           - xray:PutTelemetryRecords
           - xray:PutTraceSegments
-        Resource: "*"   
+        Resource: arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.TODOS_TABLE}/index/${self:provider.environment.TODOS_CREATED_AT_INDEX}  
 
   # TODO: Configure this function
   GenerateUploadUrl:
@@ -160,11 +148,6 @@ functions:
           - xray:PutTelemetryRecords
           - xray:PutTraceSegments
         Resource: arn:aws:s3:::${self:provider.environment.IMAGES_S3_BUCKET}/*
-      - Effect: Allow
-        Action:
-          - xray:PutTelemetryRecords
-          - xray:PutTraceSegments
-        Resource: "*"   
 
 resources:
   Resources:
